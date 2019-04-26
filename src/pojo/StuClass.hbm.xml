@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 建立类与表的映射 -->
+	<class name="pojo.StuClass" table="class">
+		<!-- 建立类中属性与表中 主键的对应 -->
+		<id name="id" column="class_id">
+			<generator class="native"></generator>
+		</id>
+		<!-- 建立类中的普通属性和标的字段的对应 -->
+		<property name="name" column="class_name"></property>
+		
+		<!-- 配置一对多的映射:放置多的一方的对象的集合 -->
+		<!--
+		    name:  多的一方的集合的属性名称
+		    column : 多的一方的外键的名称
+		    class :多的一方的类的全路径
+		    cascade :级联配置
+		    inverse :放弃外键维护权.一般由一的一方放弃
+		    cascade="save-update,delete"
+		    inverse="true"
+		 -->
+		<set name="students" >
+		 <key column="class_id"></key>
+		 <one-to-many class="pojo.Student"/>
+		</set>
+	</class>
+</hibernate-mapping>
