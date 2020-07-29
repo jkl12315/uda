@@ -1,0 +1,13 @@
+1.两种配置文件：
+  A.hibernate.cfg.xml   和   B.hibernate.properties
+
+  A中可含映射文件的配置，而B中hard codes加映射文件。
+
+  A。Configuration config=new Configuration().config();
+  B. Configuration config=new Configuration();
+     config.addClass(TUser.class);
+
+2.你不必一定用hibernate.cfg.xml或hibernate.properties这两文件名，
+   你也不一定非得把配置文件放在Classes下，
+   File file=new File("c://sample//myhibernate.xml");
+   Configuration config=new Configuration().config(file);
